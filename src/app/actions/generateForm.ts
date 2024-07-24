@@ -1,6 +1,6 @@
 "use server";
 
-import { GoogleGenerativeAI } from "@google/generative-ai";
+// import { GoogleGenerativeAI } from "@google/generative-ai";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
@@ -24,9 +24,9 @@ export async function generateForm(
       message: "Failed to Parse data",
     };
   }
-  if (!process.env.OPENAI_API_KEY) {
+  if (!process.env.GEMINI_API_KEY) {
     return {
-      message: "Open Ai Api key not found",
+      message: "Ai Api key not found",
     };
   }
 
@@ -79,17 +79,17 @@ the field options array can be []`;
   }
 }
 
-export async function generateFormWithGenAI() {
-  const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY as string);
-  const generationConfig = {
-    stopSequences: ["red"],
-    maxOutputTokens: 1000,
-    temperature: 0.7,
-    topP: 0.6,
-    topK: 16,
-  };
-  const model = genAI.getGenerativeModel({
-    model: "gemini-pro",
-    generationConfig,
-  });
-}
+// export async function generateFormWithGenAI() {
+//   const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY as string);
+//   const generationConfig = {
+//     stopSequences: ["red"],
+//     maxOutputTokens: 1000,
+//     temperature: 0.7,
+//     topP: 0.6,
+//     topK: 16,
+//   };
+//   const model = genAI.getGenerativeModel({
+//     model: "gemini-pro",
+//     generationConfig,
+//   });
+// }

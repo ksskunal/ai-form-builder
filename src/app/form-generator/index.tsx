@@ -43,7 +43,7 @@ const FormGenerator = (props: Props) => {
       signIn();
     }
   };
-
+  console.log(state);
   useEffect(() => {
     if (state.message === "success") {
       setOpen(false);
